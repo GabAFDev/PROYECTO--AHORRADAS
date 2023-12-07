@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ahorrADAs</title>
     <link rel="stylesheet" href="style.css">
+    <!-- SCRIPT DE TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SCRIPT DE FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/d47b1f1b61.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bg-slate-700">
+    <!-- INICIO HEADER -->
+    <header class="flex w-full bg-[#8aa9c9] h-24 shadow-2xl">
+        <div class="flex items-center text-[2.6em] text-white ml-5 grow">
+            <i class="fa-solid fa-piggy-bank fa-bounce mr-2"></i>
+            <h1 class="">
+                ahorrADAs
+            </h1>
+        </div>
+        <!-- INICIO NAV -->
+        <nav class="text-white">
+            <div class="hidden md:flex pt-6 pr-6">
+
+                <button class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                    Balance
+                </button>
+                <button class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                    Categorías
+                </button>
+                <button class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                    Reportes
+                </button>
+
+            </div>
+        </nav>
+        <!-- FIN NAV -->
+    </header>
+    <!-- FIN HEADER -->
+
+
     <script src="script.js"></script>
 </body>
 </html>
