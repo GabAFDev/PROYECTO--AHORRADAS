@@ -187,9 +187,52 @@
             </div>
 
             </div>
+
+            <!-- operaciones -->
+            <div class=" w-[50%] h-[580px] bg-[#8aa9c9] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
+
+                <div class="flex justify-between aling-center pt-4 operations-btn-title">
+                    <h2 class="font-mono text-4xl pb-4">
+                        Operaciones
+                    </h2>
+                    <button class=" h-12 px-6 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" id="btnNewOperation">
+                        + Nueva operacion
+                    </button>
+                </div>
+
+                <!-- seccion de operaciones a agregar -->
+                <div class="pt-6 pl-3 hidden">
+                    <ul class="flex font-mono">
+                        <li class="pr-16">Descripción</li>
+                        <li class="pr-16">Categoría</li>
+                        <li class="pr-16">Fecha</li>
+                        <li class="pr-16">Monto</li>
+                        <li class="pr-16">Acciones</li>
+                    </ul>
+
+                    <!-- agregar operaciones -->
+                    <div id="addOperations"></div>
+                </div>
+
+                <div>
+                    <figure class="flex justify-center pt-14">
+                        <img class="w-[70%]" src="imagenes/img operaciones.png"
+                            alt="imagen de dos personas agarrando una moneda">
+                    </figure>
+                    <div class="text-center">
+                        <h3 class="pb-5 font-mono text-xl">
+                            Sin resultados
+                        </h3>
+                        <p class="">
+                            Cambia los filtros o agrega operaciones
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
         </section>
         <!-- FIN PANTALLA BALANCE -->
-
     </main>
     <!-- FIN MAIN -->
 
