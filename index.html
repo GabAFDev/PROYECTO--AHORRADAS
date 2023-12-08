@@ -234,6 +234,64 @@
         </section>
         <!-- FIN PANTALLA BALANCE -->
 
+        <!-- INICIO PANTALLA NUEVA OPERACION -->
+        <section class="hidden flex justify-center pt-20 px-6 new-operarion-screen">
+            <div class="mb-9 w-[60%] h-[600px] bg-[#8aa9c9] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+                <h2 class="font-mono text-4xl py-4">
+                    Nueva operacion
+                </h2>
+
+                <div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="descriptionNo" class="text-xl pb-2">Descripción</label>
+                        <input class="rounded-[4px] h-9 text-black" type="text" id="descriptionNo">
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="amountNo"  class="text-xl pb-2">Monto</label>
+                        <input class="rounded-[4px] h-9 text-black" placeholder='0' type="number" id="amountNo">
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="typeSelect" class="text-xl pb-2">Tipo</label>
+                        <select class="rounded-[4px] h-9 text-black" id="typeSelect">
+                            <option value="Todos">Todos</option>
+                            <option value="Gasto">Gasto</option>
+                            <option value="Ganancia">Ganancia</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="inputCategories" class="text-xl pb-2">Categoria</label>
+                        <select class="rounded-[4px] h-9 text-black" id="inputCategories">
+                            <option value="Todos">Todos</option>
+                            <option value="comida">Comida</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Salidas">Salidas</option>
+                            <option value="Educación">Educación</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Trabajo">Trabajo</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="inputDate" class="text-xl pb-2">Fecha</label>
+                        <input class="rounded-[4px] h-9 text-black" type="date" id="inputDate">
+                    </div>
+
+                    <div class="text-right pt-6 pr-4">
+                        <button class="p-1 px-4 mr-2 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" id="cancelButtonNo">
+                            Cancelar
+                        </button>
+                        <button class="p-1 px-4 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" id="addButtonNo">
+                            Agregar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
     <!-- FIN MAIN -->
 

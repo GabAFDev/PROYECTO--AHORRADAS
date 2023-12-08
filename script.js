@@ -7,6 +7,17 @@ $('#burger-btn').addEventListener('click', () => {
     $('#burger-menu').classList.toggle('hidden');
 });
 
+//nueva operacion
+$('#btnNewOperation').addEventListener('click', () => {
+    $('.balance-screen').classList.add('hidden')
+    $('.new-operarion-screen').classList.toggle('hidden')
+})
+
+// cancelar nueva operacion
+$('#cancelButtonNo').addEventListener('click', () => {
+    $('.balance-screen').classList.toggle('hidden')
+    $('.new-operarion-screen').classList.toggle('hidden')
+})
 // ocultar filtros
 $('#hiddenFilters').addEventListener('click', () => {
     $('.section-filters').style.height = '20vh'
