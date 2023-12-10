@@ -15,7 +15,7 @@
 <body class="bg-[#d9c0d8]">
     <!-- INICIO HEADER -->
     <header class="flex w-full bg-[#886a8e] h-24 shadow-2xl">
-        <div class="flex items-center text-[2.6em] text-white ml-5 grow">
+        <div class="flex items-center text-[2rem] text-white ml-5 grow">
             <i class="fa-solid fa-piggy-bank fa-bounce mr-2"></i>
             <h1 class="">
                 ahorrADAs
@@ -91,10 +91,10 @@
     <!-- FIN HEADER -->
 
     <!-- INICIO MAIN -->
-    <main>
+    <main class="font-mono">
         <!-- INICIO PANTALLA BALANCE -->
 
-        <section class="flex justify-center pt-20 px-6 balance-screen">
+        <section class="hidden justify-center pt-20 px-6 balance-screen">
             <div class="pr-6 container-balance-filters">
 
                 <!-- balance -->
@@ -317,35 +317,42 @@
                 </div>
             </div>
         </section>
-        <!-- INICIO PANTALLA CATEGORIAS -->
-        <section>
-            <div id="container">
-                <h2>Categorías</h2>
-                <label for="categoriesInput">Nombre</label>
-                <div>
-                    <input id="categoriesInput" type="text">
-                </div>
-                <div>
-                    <button id="addCategoryButton">Agregar</button>
-                </div>
-            </div>
-            <div id="categories"></div>
-        </section>
-        <!-- FIN PANTALLA CATEGORIAS -->
 
-        <!-- INICIO PANTALLA EDITAR CATEGORIAS -->
-        <section id="editCategoryPanel">
-            <div id="container">
-                <h2>Editar categoría</h2>
-                <label for="editCategoryName">Nombre</label>
-                <input type="text" id="editCategoryName">
-            </div>
-            <div>
-                <button id="cancelButton">Cancelar</button>
-                <button id="editCategoryButton">Editar</button>
+        <!-- INICIO PANTALLA CATEGORIAS -->
+
+        <section class="flex justify-center pt-20 px-6">
+            <div id="container" class="w-[100%] h-72 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl">
+                <h2 class="text-4xl my-4">Categorías</h2>
+                <label for="categoriesInput" class="text-xl">Nombre</label>
+                <div class="flex flex-row space-x-4">
+                    <div class="w-[85%]">
+                        <input id="categoriesInput" type="text" class="w-[100%] h-[100%] border-white rounded-[5px]">
+                    </div>
+                    <div>
+                        <button id="addCategoryButton" class=" h-10 px-6 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
+                    </div>
+                </div>
+                <div id="categories" class="columns-3"></div>
             </div>
         </section>
-        <!-- INICIO PANTALLA EDITAR CATEGORIAS -->
+
+        <!-- Editar categorías -->
+
+        <section id="editCategoryPanel" class="hidden justify-center pt-[1%] px-0.5%">
+            <div id="container" class="mb-9 w-[60%] h-[200px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+                <div>
+                    <h2>Editar categoría</h2>
+                    <label for="editCategoryName">Nombre</label>
+                    <input type="text" id="editCategoryName">
+                </div>
+                <div>
+                    <button id="cancelButton" class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Cancelar</button>
+                    <button id="editCategoryButton" class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Editar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Fin editar categorías -->
+        <!-- FIN PANTALLA CATEGORIAS -->
     </main>
     <!-- FIN MAIN -->
 
