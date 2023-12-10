@@ -12,9 +12,9 @@
     <script src="https://kit.fontawesome.com/d47b1f1b61.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-slate-700">
+<body class="bg-[#d9c0d8]">
     <!-- INICIO HEADER -->
-    <header class="flex w-full bg-[#8aa9c9] h-24 shadow-2xl">
+    <header class="flex w-full bg-[#886a8e] h-24 shadow-2xl">
         <div class="flex items-center text-[2.6em] text-white ml-5 grow">
             <i class="fa-solid fa-piggy-bank fa-bounce mr-2"></i>
             <h1 class="">
@@ -23,50 +23,68 @@
         </div>
         <!-- INICIO NAV -->
         <nav class="text-white">
-            <div class="hidden md:flex pt-6 pr-6">
+            <ul class="hidden md:flex pt-6 pr-6">
 
-                <button
-                    class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
                     <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
                     Balance
                 </button>
-                <button
-                    class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                </li>
+
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
                     <i class="fas fa-tag mr-2" aria-hidden="true"></i>
                     Categorías
                 </button>
-                <button
-                    class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                </li>
+
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
                     <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
                     Reportes
                 </button>
+                </li>
 
-            </div>
+            </ul>
 
             <!-- Menú hamburguesa -->
             <div class="pt-6 pr-6 md:hidden">
                 <button id="burger-btn"
-                    class="p-2.5 px-4 bg-[#b5cadf] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                     Menú
                 </button>
             </div>
 
             <!-- ocultar menu -->
-            <div id="burger-menu" class="hidden md:hidden bg-slate-700 bg-opacity-75 w-32">
-                <button class="block w-full p-2.5 text-left hover:bg-gray-200">
-                    <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
-                    Balance
-                </button>
-                <button class="block w-full p-2.5 text-left hover:bg-gray-200">
-                    <i class="fas fa-tag mr-2" aria-hidden="true"></i>
-                    Categorías
-                </button>
-                <button class="block w-full p-2.5 text-left hover:bg-gray-200">
-                    <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
-                    Reportes
-                </button>
-            </div>
+            <ul id="burger-menu" class="hidden md:hidden bg-slate-700 bg-opacity-75 w-32">
+                
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                        Balance
+                    </button>
+                </li>
+
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                        Categorías
+                    </button>
+                </li>
+
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                        Reportes
+                    </button>
+                </li>
+
+            </ul>
         </nav>
         <!-- FIN NAV -->
     </header>
@@ -81,7 +99,7 @@
 
                 <!-- balance -->
                 <div
-                    class="mb-9 w-[100%] h-60 bg-[#8aa9c9] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+                    class="mb-9 w-[100%] h-60 bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
 
                     <div class="flex py-2">
                         <h2 class="font-mono text-4xl">
@@ -121,7 +139,7 @@
 
                 <!-- filtros -->
                 <div
-                    class="mb-9  w-[100%] h-[420px] bg-[#8aa9c9] border-2 border-white rounded-[5px] px-1 text-white shadow-2xl section-filters">
+                    class="mb-9  w-[100%] h-[420px] bg-[#a183a2] border-2 border-white rounded-[5px] px-1 text-white shadow-2xl section-filters">
 
                     <div class="px-2">
 
@@ -133,12 +151,12 @@
                                 <i class="fa-solid fa-arrow-up-wide-short text-2xl px-2"></i>
                             </div>
                             <button
-                                class="p-1 px-1 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                                class="p-1 px-1 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                                 id="hiddenFilters">
                                 Ocultar filtros
                             </button>
                             <button
-                                class="hidden p-1 px-1 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                                class="hidden p-1 px-1 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                                 id="haddenFilters">
                                 Mostrar filtros
                             </button>
@@ -194,14 +212,14 @@
 
             <!-- operaciones -->
             <div
-                class=" w-[50%] h-[580px] bg-[#8aa9c9] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
+                class=" w-[50%] h-[580px] bg-[#a183a2] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
 
                 <div class="flex justify-between aling-center pt-4 operations-btn-title">
                     <h2 class="font-mono text-4xl pb-4">
                         Operaciones
                     </h2>
                     <button
-                        class=" h-12 px-6 text-1xl bg-[#b5cadf] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                        class=" h-12 px-6 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                         id="btnNewOperation">
                         + Nueva operacion
                     </button>
