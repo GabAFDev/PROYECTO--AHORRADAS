@@ -1,12 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ahorrADAs</title>
     <link rel="stylesheet" href="style.css">
+    <!-- SCRIPT DE TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SCRIPT DE FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/d47b1f1b61.js" crossorigin="anonymous"></script>
 </head>
-<body>
+
+<body class="bg-[#d9c0d8]">
+    <!-- INICIO HEADER -->
+    <header class="flex w-full bg-[#886a8e] h-24 shadow-2xl">
+        <div class="flex items-center text-[2.6em] text-white ml-5 grow">
+            <i class="fa-solid fa-piggy-bank fa-bounce mr-2"></i>
+            <h1 class="">
+                ahorrADAs
+            </h1>
+        </div>
+        <!-- INICIO NAV -->
+        <nav class="text-white">
+            <ul class="hidden md:flex pt-6 pr-6">
+
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                    Balance
+                </button>
+                </li>
+
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                    Categorías
+                </button>
+                </li>
+
+                <li>
+                    <button
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                    Reportes
+                </button>
+                </li>
+
+            </ul>
+
+            <!-- Menú hamburguesa -->
+            <div class="pt-6 pr-6 md:hidden">
+                <button id="burger-btn"
+                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    Menú
+                </button>
+            </div>
+
+            <!-- ocultar menu -->
+            <ul id="burger-menu" class="hidden md:hidden bg-slate-700 bg-opacity-75 w-32">
+                
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                        Balance
+                    </button>
+                </li>
+
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                        Categorías
+                    </button>
+                </li>
+
+                <li>
+                    <button class="block w-full p-2.5 text-left hover:bg-gray-200">
+                        <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                        Reportes
+                    </button>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- FIN NAV -->
+    </header>
+    <!-- FIN HEADER -->
+
+    <!-- INICIO MAIN -->
+    <main>
+        <!-- INICIO PANTALLA BALANCE -->
+
+        <section class="flex justify-center pt-20 px-6 balance-screen">
+            <div class="pr-6 container-balance-filters">
+
+                <!-- balance -->
+                <div
+                    class="mb-9 w-[100%] h-60 bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+
+                    <div class="flex py-2">
+                        <h2 class="font-mono text-4xl">
+                            Balance
+                        </h2>
+                        <i class="fa-solid fa-scale-unbalanced-flip pl-2 text-3xl"></i>
+                    </div>
+                    <div class="flex justify-between text-[1.2em] pb-6">
+                        <p>
+                            Ganancias
+                        </p>
+                        <span class="text-green-600">
+                            +$0
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between flex justify-between text-[1.2em] pb-6">
+                        <p>
+                            Gastos
+                        </p>
+                        <span class="text-red-600">
+                            +$0
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between flex justify-between text-[1.2em] ">
+                        <p>
+                            TOTAL
+                        </p>
+                        <span>
+                            $0
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- filtros -->
+                <div
+                    class="mb-9  w-[100%] h-[420px] bg-[#a183a2] border-2 border-white rounded-[5px] px-1 text-white shadow-2xl section-filters">
+
+                    <div class="px-2">
+
+                        <div class="flex justify-between  pt-3 pb-5">
+                            <div class="flex">
+                                <h2 class="font-mono text-2xl">
+                                    Filtros
+                                </h2>
+                                <i class="fa-solid fa-arrow-up-wide-short text-2xl px-2"></i>
+                            </div>
+                            <button
+                                class="p-1 px-1 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                                id="hiddenFilters">
+                                Ocultar filtros
+                            </button>
+                            <button
+                                class="hidden p-1 px-1 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                                id="haddenFilters">
+                                Mostrar filtros
+                            </button>
+                        </div>
+
+                        <div class="filters">
+
+                            <div class="flex flex-col pb-3">
+                                <label for="typeSelect" class="text-xl pb-2">Tipo</label>
+                                <select class="rounded-[4px] h-9 text-black" id="typeSelect">
+                                    <option value="Todos">Todos</option>
+                                    <option value="Gasto">Gasto</option>
+                                    <option value="Ganancia">Ganancia</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col pb-3">
+                                <label for="inputCategories" class="text-xl pb-2">Categoria</label>
+                                <select class="rounded-[4px] h-9 text-black" id="inputCategories">
+                                    <option value="Todos">Todos</option>
+                                    <option value="comida">Comida</option>
+                                    <option value="Servicios">Servicios</option>
+                                    <option value="Salidas">Salidas</option>
+                                    <option value="Educación">Educación</option>
+                                    <option value="Transporte">Transporte</option>
+                                    <option value="Trabajo">Trabajo</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col pb-3">
+                                <label for="inputDate" class="text-xl pb-2">Desde</label>
+                                <input class="rounded-[4px] h-9 text-black" type="date" id="inputDate">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="inputSortBy" class="text-xl pb-2">Ordenar por</label>
+                                <select class="rounded-[4px] h-9 text-black" id="inputSortBy">
+                                    <option value="Más reciente">Más reciente</option>
+                                    <option value="Menos reciente">Menos reciente</option>
+                                    <option value="Mayor monto">Mayor monto</option>
+                                    <option value="Menor monto">Menor monto</option>
+                                    <option value="A/Z">A/Z</option>
+                                    <option value="Z/A">Z/A</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- operaciones -->
+            <div
+                class=" w-[50%] h-[580px] bg-[#a183a2] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
+
+                <div class="flex justify-between aling-center pt-4 operations-btn-title">
+                    <h2 class="font-mono text-4xl pb-4">
+                        Operaciones
+                    </h2>
+                    <button
+                        class=" h-12 px-6 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                        id="btnNewOperation">
+                        + Nueva operacion
+                    </button>
+                </div>
+
+                <!-- seccion de operaciones a agregar -->
+                <div class="pt-6 pl-3 hidden">
+                    <ul class="flex font-mono">
+                        <li class="pr-16">Descripción</li>
+                        <li class="pr-16">Categoría</li>
+                        <li class="pr-16">Fecha</li>
+                        <li class="pr-16">Monto</li>
+                        <li class="pr-16">Acciones</li>
+                    </ul>
+
+                    <!-- agregar operaciones -->
+                    <div id="addOperations"></div>
+                </div>
+
+                <div>
+                    <figure class="flex justify-center pt-14">
+                        <img class="w-[70%]" src="imagenes/img operaciones.png"
+                            alt="imagen de dos personas agarrando una moneda">
+                    </figure>
+                    <div class="text-center">
+                        <h3 class="pb-5 font-mono text-xl">
+                            Sin resultados
+                        </h3>
+                        <p class="">
+                            Cambia los filtros o agrega operaciones
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- FIN PANTALLA BALANCE -->
+
+        <!-- INICIO PANTALLA NUEVA OPERACION -->
+        <section class="hidden flex justify-center pt-20 px-6 new-operarion-screen">
+            <div
+                class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+                <h2 class="font-mono text-4xl py-4">
+                    Nueva operacion
+                </h2>
+
+                <div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="descriptionNo" class="text-xl pb-2">Descripción</label>
+                        <input class="rounded-[4px] h-9 text-black" type="text" id="descriptionNo">
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="amountNo" class="text-xl pb-2">Monto</label>
+                        <input class="rounded-[4px] h-9 text-black" placeholder='0' type="number" id="amountNo">
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="typeSelect" class="text-xl pb-2">Tipo</label>
+                        <select class="rounded-[4px] h-9 text-black" id="typeSelect">
+                            <option value="Todos">Todos</option>
+                            <option value="Gasto">Gasto</option>
+                            <option value="Ganancia">Ganancia</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="inputCategories" class="text-xl pb-2">Categoria</label>
+                        <select class="rounded-[4px] h-9 text-black" id="inputCategories">
+                            <option value="Todos">Todos</option>
+                            <option value="comida">Comida</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Salidas">Salidas</option>
+                            <option value="Educación">Educación</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Trabajo">Trabajo</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col pb-3">
+                        <label for="inputDate" class="text-xl pb-2">Fecha</label>
+                        <input class="rounded-[4px] h-9 text-black" type="date" id="inputDate">
+                    </div>
+
+                    <div class="text-right pt-6 pr-4">
+                        <button
+                            class="p-1 px-4 mr-2 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            id="cancelButtonNo">
+                            Cancelar
+                        </button>
+                        <button
+                            class="p-1 px-4 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            id="addButtonNo">
+                            Agregar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FIN MAIN -->
+
+
     <script src="script.js"></script>
 </body>
+
 </html>
