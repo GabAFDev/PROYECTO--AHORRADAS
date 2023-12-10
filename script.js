@@ -13,11 +13,18 @@ $('#btnNewOperation').addEventListener('click', () => {
     $('.new-operarion-screen').classList.toggle('hidden')
 })
 
+<<<<<<< HEAD
 // cancelar nueva operacion
+=======
+>>>>>>> 9402b662107b571c14e47080a74b6bcc1990c4b1
 $('#cancelButtonNo').addEventListener('click', () => {
     $('.balance-screen').classList.toggle('hidden')
     $('.new-operarion-screen').classList.toggle('hidden')
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9402b662107b571c14e47080a74b6bcc1990c4b1
 // ocultar filtros
 $('#hiddenFilters').addEventListener('click', () => {
     $('.section-filters').style.height = '20vh'
