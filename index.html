@@ -320,7 +320,7 @@
 
         <!-- INICIO PANTALLA CATEGORIAS -->
 
-        <section class="flex justify-center pt-20 px-6">
+        <section class="hidden flex justify-center pt-20 px-6">
             <div id="container" class="w-[100%] h-72 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl">
                 <h2 class="text-4xl my-4">Categorías</h2>
                 <label for="categoriesInput" class="text-xl">Nombre</label>
@@ -338,14 +338,14 @@
 
         <!-- Editar categorías -->
 
-        <section id="editCategoryPanel" class="hidden justify-center pt-[1%] px-0.5%">
-            <div id="container" class="mb-9 w-[60%] h-[200px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+        <section id="editCategoryPanel" class="flex justify-center pt-[15%] px-[0.5%]">
+            <div id="container" class="w-[70%] h-60 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl">
                 <div>
-                    <h2>Editar categoría</h2>
-                    <label for="editCategoryName">Nombre</label>
-                    <input type="text" id="editCategoryName">
+                    <h2 class="text-4xl my-4">Editar categoría</h2>
+                    <label for="editCategoryName" class="text-xl">Nombre</label>
+                    <input type="text" id="editCategoryName" class="w-[100%] h-7 border-white rounded-[5px]">
                 </div>
-                <div>
+                <div class="flex justify-end mt-[12%]">
                     <button id="cancelButton" class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Cancelar</button>
                     <button id="editCategoryButton" class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Editar</button>
                 </div>
