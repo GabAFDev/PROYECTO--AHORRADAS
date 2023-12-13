@@ -318,10 +318,11 @@
             </div>
         </section>
 
+
         <!-- INICIO PANTALLA CATEGORIAS -->
 
         <section class="flex justify-center pt-20 px-6">
-            <div id="container" class="w-[100%] h-72 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
+            <div id="containerCategories" class="w-[100%] h-72 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
                 <h2 class="text-4xl my-4">Categorías</h2>
                 <label for="categoriesInput" class="text-xl">Nombre</label>
                 <div class="flex flex-row space-x-4">
@@ -339,7 +340,7 @@
         <!-- Editar categorías -->
 
         <section id="editCategoryPanel" class="hidden flex justify-center pt-[15%] px-[0.5%]">
-            <div id="container" class="w-[85%] h-64 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
+            <div id="containerEditCategory" class="w-[85%] h-64 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
                 <div>
                     <h2 class="text-4xl my-4">Editar categoría</h2>
                     <label for="editCategoryName" class="text-xl">Nombre</label>
@@ -351,8 +352,101 @@
                 </div>
             </div>
         </section>
+
         <!-- Fin editar categorías -->
         <!-- FIN PANTALLA CATEGORIAS -->
+
+
+        <!-- INICIO PANTALLA REPORTES -->
+
+        <section>
+            <div id="containerReports">
+                <h2>Reportes</h2>
+                <div id="noReports">
+                    <figure>
+                        <img src="" alt="">
+                    </figure>
+                    <h4>Operaciones insuficientes</h4>
+                    <p>Prueba agregando más operaciones</p>
+                </div>
+
+                <!-- Resumen -->
+
+                <div id="withReports">
+                    <section id="summary">
+                        <h3>Resumen</h3>
+
+                        <!-- Categoría con mayor ganancia -->
+
+                        <div>
+                            <div>Categoría con mayor ganancia</div>
+                            <div>
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory"></div>
+                        </div>
+
+                        <!-- Categoría con mayor gasto -->
+
+                        <div>
+                            <div>Categoría con mayor gasto</div>
+                            <div>
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory"></div>
+                        </div>
+
+                        <!-- Categoría con mayor balance -->
+
+                        <div>
+                            <div>Categoría con mayor balance</div>
+                            <div>
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory"></div>
+                        </div>
+
+                        <!-- Mes con mayor ganancia -->
+
+                        <div>
+                            <div>Mes con mayor ganancia</div>
+                            <div>
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory"></div>
+                        </div>
+
+                        <!-- Mes con mayor gasto -->
+
+                        <div>
+                            <div>Mes con mayor gasto</div>
+                            <div>
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory"></div>
+                        </div>
+
+                    </section>
+
+                    <!-- Totales por categoría -->
+
+                    <section>
+                        <h3>Totales por categoría</h3>
+                        <div></div>
+                    </section>
+
+                    <!-- Totales por mes -->
+
+                    <section>
+                        <h3>Totales por mes</h3>
+                        <div></div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIN PANTALLA REPORTES -->
+
     </main>
     <!-- FIN MAIN -->
 
