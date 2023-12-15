@@ -260,7 +260,7 @@
         <!-- FIN PANTALLA BALANCE -->
 
         <!-- INICIO PANTALLA NUEVA OPERACION -->
-        <section class="hidden flex justify-center pt-20 px-6 new-operarion-screen">
+        <section class="hidden flex justify-center py-14 px-6 new-operarion-screen">
             <div class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
                 <h2 class="font-mono text-4xl py-4">
                     Nueva operacion
@@ -318,10 +318,11 @@
             </div>
         </section>
 
+
         <!-- INICIO PANTALLA CATEGORIAS -->
 
-        <section class="flex justify-center pt-20 px-6">
-            <div id="container" class="w-[100%] h-72 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl">
+        <section class="hidden flex justify-center py-14 px-6">
+            <div id="containerCategories" class="w-[100%] bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 py-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
                 <h2 class="text-4xl my-4">Categorías</h2>
                 <label for="categoriesInput" class="text-xl">Nombre</label>
                 <div class="flex flex-row space-x-4">
@@ -329,7 +330,7 @@
                         <input id="categoriesInput" type="text" class="w-[100%] h-[100%] border-white rounded-[5px]">
                     </div>
                     <div>
-                        <button id="addCategoryButton" class=" h-10 px-6 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
+                        <button id="addCategoryButton" class=" h-10 px-6 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
                     </div>
                 </div>
                 <div id="categories" class="columns-3"></div>
@@ -338,21 +339,136 @@
 
         <!-- Editar categorías -->
 
-        <section id="editCategoryPanel" class="hidden justify-center pt-[1%] px-0.5%">
-            <div id="container" class="mb-9 w-[60%] h-[200px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+        <section id="editCategoryPanel" class="hidden flex justify-center pt-15 px-[0.5%]">
+            <div id="containerEditCategory" class="w-[85%] py-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
                 <div>
-                    <h2>Editar categoría</h2>
-                    <label for="editCategoryName">Nombre</label>
-                    <input type="text" id="editCategoryName">
+                    <h2 class="text-4xl my-4">Editar categoría</h2>
+                    <label for="editCategoryName" class="text-xl">Nombre</label>
+                    <input type="text" id="editCategoryName" class="w-[100%] h-7 border-white rounded-[5px] mt-[2%]">
                 </div>
-                <div>
-                    <button id="cancelButton" class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Cancelar</button>
-                    <button id="editCategoryButton" class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100">Editar</button>
+                <div class="flex justify-end mt-7 md:mt-14">
+                    <button id="cancelButton" class="p-1 px-4 mr-2 text-1xl text-slate-500 bg-[#e5dde6] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Cancelar</button>
+                    <button id="editCategoryButton" class="p-1 px-4 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Editar</button>
                 </div>
             </div>
         </section>
+
         <!-- Fin editar categorías -->
         <!-- FIN PANTALLA CATEGORIAS -->
+
+
+        <!-- INICIO PANTALLA REPORTES -->
+
+        <section class="flex justify-center py-14 px-6">
+            <div id="containerReports" class="w-[100%] pb-3 px-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%]">
+                <h2 class="text-4xl my-4">Reportes</h2>
+                <div id="noReports" class="hidden flex flex-col text-center mt-8">
+                    <figure class="flex justify-center self-center">
+                        <img src="./imagenes/noreports.svg" alt="no reports" class="w-[60%]">
+                    </figure>
+                    <h4 class="text-xl mt-5">Operaciones insuficientes</h4>
+                    <p class="text-[0.8rem] my-1">Prueba agregando más operaciones</p>
+                </div>
+
+                <!-- Resumen -->
+
+                <div id="withReports" class="flex flex-col">
+                    <section id="summary" >
+                        <h3 class="text-[1.2rem]">Resumen</h3>
+
+                        <!-- Categoría con mayor ganancia -->
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor ganancia</div>
+                            <div class="col-start-4 col-span-1">
+                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                            </div>
+                            <div id="amountCategory" class="col-start-5 col-span-1 text-green-600"></div>
+                        </div>
+
+                        <!-- Categoría con mayor gasto -->
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor gasto</div>
+                            <div class="col-start-4 col-span-1">
+                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                            </div>
+                            <div id="amountCategory" class="col-start-5 col-span-1 text-red-600"></div>
+                        </div>
+
+                        <!-- Categoría con mayor balance -->
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor balance</div>
+                            <div class="col-start-4 col-span-1">
+                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                            </div>
+                            <div id="amountCategory" class="col-start-5 col-span-1"></div>
+                        </div>
+
+                        <!-- Mes con mayor ganancia -->
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-start-1 col-span-3 text-[0.95rem]">Mes con mayor ganancia</div>
+                            <div class="col-start-4 col-span-1">
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory" class="col-start-5 col-span-1 text-green-600"></div>
+                        </div>
+
+                        <!-- Mes con mayor gasto -->
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-start-1 col-span-3 text-[0.95rem]">Mes con mayor gasto</div>
+                            <div class="col-start-4 col-span-1">
+                                <span id="tagCategory"></span>
+                            </div>
+                            <div id="amountCategory" class="col-start-5 col-span-1 text-red-600"></div>
+                        </div>
+
+                    </section>
+
+                    <!-- Totales por categoría -->
+
+                    <section>
+                        <h3 class="text-[1.2rem]">Totales por categoría</h3>
+                        <table id="monthSummaryTable" class="table-auto">
+
+                            <thead class="text-left text-[0.90rem]">
+                                <th class="pr-2">Categorías</th>
+                                <th class="pr-2">Ganancias</th>
+                                <th class="pr-2">Gastos</th>
+                                <th class="pr-2">Balance</th>
+                            </thead>
+                            
+                            <tbody></tbody>
+                            
+                        </table>
+                    </section>
+
+                    <!-- Totales por mes -->
+
+                    <section>
+                        <h3 class="text-[1.2rem]">Totales por mes</h3>
+                        <table id="monthSummaryTable" class="table-auto">
+
+                            <thead class="text-left text-[0.90rem]">
+                                <th class="pr2">Categorías</th>
+                                <th class="pr-2">Ganancias</th>
+                                <th class="pr-2">Gastos</th>
+                                <th class="pr-2">Balance</th>
+                            </thead>
+                            
+                            <tbody></tbody>
+
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIN PANTALLA REPORTES -->
+
     </main>
     <!-- FIN MAIN -->
 
