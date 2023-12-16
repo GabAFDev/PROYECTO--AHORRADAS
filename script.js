@@ -1,40 +1,60 @@
 const $ = (selector) => document.querySelector(selector)
 
+const remove = (selectors) => {
+    for (const selector of selectors) {
+        $(selector).classList.remove('hidden')
+    }
+}
+const add = (selectors) =>  {
+    for (const selector of selectors) {
+        $(selector).classList.add('hidden')
+    }
+}
+
+
 // FUNCIONALIDAD DE BOTONES
 
-// menu hamburguesa
+const initializacionButtons = () => {
+
+    // menu hamburguesa
 $('#burger-btn').addEventListener('click', () => {
     $('#burger-menu').classList.toggle('hidden');
 });
 
-//nueva operacion
+    //nueva operacion
 $('#btnNewOperation').addEventListener('click', () => {
-    $('.balance-screen').classList.add('hidden')
-    $('.new-operarion-screen').classList.toggle('hidden')
+    add(['.balance-screen', ])
+    remove(['.new-operarion-screen'])
 })
 
 // cancelar nueva operacion
 $('#cancelButtonNo').addEventListener('click', () => {
-    $('.balance-screen').classList.toggle('hidden')
-    $('.new-operarion-screen').classList.toggle('hidden')
+    remove(['.balance-screen'])
+    add(['.new-operarion-screen'])
 })
-
 
 // ocultar filtros
 $('#hiddenFilters').addEventListener('click', () => {
     $('.section-filters').style.height = '20vh'
-    $('.filters').classList.toggle('hidden')
-    $('#hiddenFilters').classList.toggle('hidden')
-    $('#haddenFilters').classList.toggle('hidden')
+    add(['.filters', '#hiddenFilters'])
+    remove(['#haddenFilters'])
 })
 // mostrar filtros
 $('#haddenFilters').addEventListener('click', () => {
     $('.section-filters').style.height = '63vh'
-    $('.filters').classList.toggle('hidden')
-    $('#hiddenFilters').classList.toggle('hidden')
-    $('#haddenFilters').classList.toggle('hidden')
+    remove(['.filters', '#hiddenFilters'])
+    add(['#haddenFilters'])
 })
+}
 
+initializacionButtons()
+
+
+
+// funciones localStorage
+const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data))
+// pedir info
+const getData = (key) => JSON.parse(localStorage.getItem(key))
 
 
 
@@ -55,10 +75,10 @@ const dates = {
     categories: []
 }
 
-const button = $('#addButtonNo');
 
 
-button.addEventListener('click', () => {
+
+$('#addButtonNo').addEventListener('click', () => {
     // const operation = newOperation()
 
     const { operations } = dates
@@ -79,7 +99,7 @@ button.addEventListener('click', () => {
 
 
 
-// funcion que verifica si la operacion quiere ser duplicada 
+// funcion que verifica si la operacion quisiera duplicarse
 
 function isOperationDuplicate(newOperation, operations) {
     // compara la operacion a agregar con la ya existente en el localStorage
@@ -90,3 +110,5 @@ function isOperationDuplicate(newOperation, operations) {
     // Si hay operaciones duplicadas, el tamaño de duplicateOperations será mayor que cero
     return duplicateOperations.length > 0;
 }
+
+
