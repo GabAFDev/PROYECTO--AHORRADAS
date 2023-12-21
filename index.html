@@ -246,6 +246,7 @@
                     </div>
                 </div>
 
+
                 <div class="hidden">
                     <figure class="flex justify-center pt-14">
                         <img class="w-[70%]" src="imagenes/img operaciones.png"
@@ -262,7 +263,30 @@
 
                 </div>
 
+
             </div>
+            <div class="hidden fixed inset-0 overflow-y-auto" id="deleteWindow">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+                    <div class="fixed inset-0 transition-opacity">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+                    <span class=" sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div
+                        class="inline-block align-middle bg-[#D9C0D8] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="p-4 flex items-center justify-center space-y-4">
+                            <p class="text-2xl">
+                                ¿Estás seguro que quieres eliminar esta operación?
+                            </p>
+                            <button
+                                class="p-2 text-xl bg-red-600 border-2 border-white rounded-full text-white hover:border-transparent hover:bg-red-700 transition duration-300 ease-in-out" id="deleteButtonNo">
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </section>
         <!-- FIN PANTALLA BALANCE -->
 
@@ -316,15 +340,18 @@
                     </div>
 
                     <div class="text-right pt-6 pr-4">
-                        <button class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                        <button
+                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                             id="cancelButtonNo">
                             Cancelar
                         </button>
-                        <button class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                        <button
+                            class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                             id="addButtonNo">
                             Agregar
                         </button>
-                        <button class="hidden p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                        <button
+                            class="hidden p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
                             id="addEditButtonNo">
                             Agregar editado
                         </button>

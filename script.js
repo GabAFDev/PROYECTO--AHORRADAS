@@ -45,10 +45,6 @@ const getOperationById = (id) => {
 
 
 // SECCION AGREGAR NUEVA OPERACION 
-
-
-
-
 const iterateOperations = (operations) => {
     for (const operation of operations) {
         $('#tableOperations').innerHTML += `
@@ -59,7 +55,7 @@ const iterateOperations = (operations) => {
                     <td class="p-2">${operation.amount}</td>
                     <td class="p-2 flex flex-col space-y-2">
                         <button class="text-[12px] text-green-300 hover:text-slate-500" onclick="showFormEdit('${operation.id}')">Editar</button>
-                        <button class="text-[12px] text-red-300 hover:text-slate-500">Eliminar</button>
+                        <button class="text-[12px] text-red-300 hover:text-slate-500"  onclick="showDeleteOperation('${operation.id}')">Eliminar</button>
                     </td>
                 </tr>
     `
@@ -93,15 +89,36 @@ const showFormEdit = (operationId) => {
     console.log(operationSelected)
 
     // aca le decimos que por cada value del input me muestre el que ya esta prescrito en el localStorage de la operacion en la que le estoy haciendo click
-        $('#descriptionNo').value = operationSelected.description
-        $('#amountNo').value = operationSelected.amount
-        $('#typeSelect').value = operationSelected.type
-        $('#inputCategories').value = operationSelected.category
-        $('#inputDate').value = operationSelected.date
+    $('#descriptionNo').value = operationSelected.description
+    $('#amountNo').value = operationSelected.amount
+    $('#typeSelect').value = operationSelected.type
+    $('#inputCategories').value = operationSelected.category
+    $('#inputDate').value = operationSelected.date
 
-        // ahora me voy al boton aceptar para meter el id 
-        // le agrego un atributo. data-id ahora tiene el id de la operacion que clickeamos
-        $('#addEditButtonNo').setAttribute('data-id', operationId)
+    // ahora me voy al boton aceptar para meter el id 
+    // le agrego un atributo. data-id ahora tiene el id de la operacion que clickeamos
+    $('#addEditButtonNo').setAttribute('data-id', operationId)
+}
+
+
+
+// eliminar operacion
+const showDeleteOperation = (operationId) => {
+    remove(['#deleteWindow'])
+
+    $('#deleteButtonNo').setAttribute('data-id', operationId)
+    $('#deleteButtonNo').addEventListener('click', () => {
+        const operationId = $('#deleteButtonNo').getAttribute('data-id')
+        console.log(operationId)
+        deleteDate(operationId)
+    })
+}
+
+const deleteDate = (operationId) => {
+    // pedimos las operaciones y las filtramos diciendo que nos arme un array con las operaciones que no coinciden con el id de la opacion clickeada, menos, a la si coincide 
+    const currentData = getData('operations').filter(operation => operation.id != operationId)
+    setData('operations', currentData)
+    window.location.reload()
 }
 
 
@@ -156,7 +173,9 @@ const initializacion = () => {
         updatedtData.push(infoForm())
         // 3. ahora ya modificado ahora si se puede mandar a setData el cual lo introduce al localStorage
         setData('operations', updatedtData) // haciendo estos pasos metimos al objeto adentro de un array para poder ser iterado
+        window.location.reload()
     })
+
     $('#addEditButtonNo').addEventListener('click', () => {
         const operationId = $('#addEditButtonNo').getAttribute('data-id')
         // hacemos un map que nos trae un array modificado
@@ -169,6 +188,7 @@ const initializacion = () => {
         })
         // le pasamos al localStorage el array modificado
         setData('operations', currentData)
+        window.location.reload()
     })
 }
 
