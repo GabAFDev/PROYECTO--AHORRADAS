@@ -78,6 +78,8 @@ const infoForm = () => {
     };
 }
 
+
+// editar operacion
 const showFormEdit = (operationId) => {
     add(['.balance-screen', '#addButtonNo'])
     remove(['.new-operarion-screen', '#addEditButtonNo'])
@@ -176,6 +178,7 @@ const initializacion = () => {
         window.location.reload()
     })
 
+    // editar operacion
     $('#addEditButtonNo').addEventListener('click', () => {
         const operationId = $('#addEditButtonNo').getAttribute('data-id')
         // hacemos un map que nos trae un array modificado
@@ -193,64 +196,6 @@ const initializacion = () => {
 }
 
 window.addEventListener('load', initializacion())
-
-
-
-
-
-
-// const newOperation = () => {
-//     return {
-//         description: $('#descriptionNo').value,
-//         amount: $('#amountNo').value,
-//         type: $('#typeSelect').value,
-//         category: $('#inputCategories').value,
-//         date: $('#inputDate').value
-//     };
-// }
-
-// const dates = {
-//     operations: [],
-//     categories: []
-// }
-
-
-
-
-// $('#addButtonNo').addEventListener('click', () => {
-//     // const operation = newOperation()
-
-//     const { operations } = dates
-
-//     const operation = newOperation();
-//     if (!isOperationDuplicate(operation, operations)) {
-//         operations.push(operation);
-//         console.log(dates);
-
-//         // lo volvemos un objeto json y lo seteamos al localStorage
-//         const parsedDates = JSON.stringify(dates);
-//         localStorage.setItem('dates', parsedDates);
-//     } else {
-//         alert('La operación ya existe y no se puede repetir.');
-//     }
-// })
-
-
-
-
-// // funcion que verifica si la operacion quisiera duplicarse
-
-// function isOperationDuplicate(newOperation, operations) {
-//     // compara la operacion a agregar con la ya existente en el localStorage
-//     const duplicateOperations = operations.filter(existingOperation => {
-//         return JSON.stringify(existingOperation) === JSON.stringify(newOperation);
-//     });
-
-//     // Si hay operaciones duplicadas, el tamaño de duplicateOperations será mayor que cero
-//     return duplicateOperations.length > 0;
-// }
-
-
 
 
 
