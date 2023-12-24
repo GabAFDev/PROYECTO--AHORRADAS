@@ -27,26 +27,26 @@
 
                 <li>
                     <button
-                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
-                    <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
-                    Balance
-                </button>
+                        class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                        <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                        Balance
+                    </button>
                 </li>
 
                 <li>
                     <button
-                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
-                    <i class="fas fa-tag mr-2" aria-hidden="true"></i>
-                    Categorías
-                </button>
+                        class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                        <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                        Categorías
+                    </button>
                 </li>
 
                 <li>
                     <button
-                    class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
-                    <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
-                    Reportes
-                </button>
+                        class="p-2.5 px-4 bg-[#b899bc] border-2 border-white rounded-[1000px] mr-2.5 hover:border-transparent hover:text-slate-500 hover:bg-white hover:duration-100">
+                        <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                        Reportes
+                    </button>
                 </li>
 
             </ul>
@@ -62,7 +62,7 @@
 
             <!-- ocultar menu -->
             <ul id="burger-menu" class="hidden md:hidden bg-slate-700 bg-opacity-75 w-32">
-                
+
                 <li>
                     <button class="block w-full p-2.5 text-left hover:bg-gray-200">
                         <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
@@ -94,7 +94,7 @@
     <main class="font-mono">
         <!-- INICIO PANTALLA BALANCE -->
 
-        <section class="hidden justify-center pt-20 px-6 balance-screen">
+        <section class=" flex justify-center pt-20 px-6 balance-screen">
             <div class="pr-6 container-balance-filters">
 
                 <!-- balance -->
@@ -162,11 +162,11 @@
                             </button>
                         </div>
 
-                        <div class="filters">
+                        <form class="filters" onsubmit="return false">
 
                             <div class="flex flex-col pb-3">
-                                <label for="typeSelect" class="text-xl pb-2">Tipo</label>
-                                <select class="rounded-[4px] h-9 text-black" id="typeSelect">
+                                <label for="type" class="text-xl pb-2">Tipo</label>
+                                <select class="rounded-[4px] h-9 text-black" id="type">
                                     <option value="Todos">Todos</option>
                                     <option value="Gasto">Gasto</option>
                                     <option value="Ganancia">Ganancia</option>
@@ -174,8 +174,8 @@
                             </div>
 
                             <div class="flex flex-col pb-3">
-                                <label for="inputCategories" class="text-xl pb-2">Categoria</label>
-                                <select class="rounded-[4px] h-9 text-black" id="inputCategories">
+                                <label for="categories" class="text-xl pb-2">Categoria</label>
+                                <select class="rounded-[4px] h-9 text-black" id="categories">
                                     <option value="Todos">Todos</option>
                                     <option value="comida">Comida</option>
                                     <option value="Servicios">Servicios</option>
@@ -187,13 +187,13 @@
                             </div>
 
                             <div class="flex flex-col pb-3">
-                                <label for="inputDate" class="text-xl pb-2">Desde</label>
-                                <input class="rounded-[4px] h-9 text-black" type="date" id="inputDate">
+                                <label for="date" class="text-xl pb-2">Desde</label>
+                                <input class="rounded-[4px] h-9 text-black" type="date" id="date">
                             </div>
 
                             <div class="flex flex-col">
-                                <label for="inputSortBy" class="text-xl pb-2">Ordenar por</label>
-                                <select class="rounded-[4px] h-9 text-black" id="inputSortBy">
+                                <label for="sortBy" class="text-xl pb-2">Ordenar por</label>
+                                <select class="rounded-[4px] h-9 text-black" id="sortBy">
                                     <option value="Más reciente">Más reciente</option>
                                     <option value="Menos reciente">Menos reciente</option>
                                     <option value="Mayor monto">Mayor monto</option>
@@ -203,7 +203,7 @@
                                 </select>
                             </div>
 
-                        </div>
+                        </form>
 
                     </div>
                 </div>
@@ -226,20 +226,28 @@
                 </div>
 
                 <!-- seccion de operaciones a agregar -->
-                <div class="pt-6 pl-3 hidden">
-                    <ul class="flex font-mono">
-                        <li class="pr-16">Descripción</li>
-                        <li class="pr-16">Categoría</li>
-                        <li class="pr-16">Fecha</li>
-                        <li class="pr-16">Monto</li>
-                        <li class="pr-16">Acciones</li>
-                    </ul>
+                <div class="pt-6 pl-3">
 
                     <!-- agregar operaciones -->
-                    <div id="addOperations"></div>
+                    <div class="max-w-screen-md mx-auto overflow-y-auto">
+                        <table class="w-full border-collapse font-mono">
+                            <thead class="bg-[#886a8e]">
+                                <th class="p-2">Descripción</th>
+                                <th class="p-2">Categoría</th>
+                                <th class="p-2">Fecha</th>
+                                <th class="p-2">Monto</th>
+                                <th class="p-2">Acciones</th>
+                            </thead>
+
+                            <tbody id="tableOperations">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <div>
+
+                <div class="hidden">
                     <figure class="flex justify-center pt-14">
                         <img class="w-[70%]" src="imagenes/img operaciones.png"
                             alt="imagen de dos personas agarrando una moneda">
@@ -255,32 +263,58 @@
 
                 </div>
 
+
             </div>
+            <div class="hidden fixed inset-0 overflow-y-auto" id="deleteWindow">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+                    <div class="fixed inset-0 transition-opacity">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+                    <span class=" sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div
+                        class="inline-block align-middle bg-[#D9C0D8] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="p-4 flex items-center justify-center space-y-4">
+                            <p class="text-2xl">
+                                ¿Estás seguro que quieres eliminar esta operación?
+                            </p>
+                            <button
+                                class="p-2 text-xl bg-red-600 border-2 border-white rounded-full text-white hover:border-transparent hover:bg-red-700 transition duration-300 ease-in-out" id="deleteButtonNo">
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </section>
         <!-- FIN PANTALLA BALANCE -->
 
         <!-- INICIO PANTALLA NUEVA OPERACION -->
         <section class="hidden flex justify-center py-14 px-6 new-operarion-screen">
-            <div class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
+            <div
+                class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
                 <h2 class="font-mono text-4xl py-4">
                     Nueva operacion
                 </h2>
 
-                <div>
+                <form onsubmit="return false">
 
                     <div class="flex flex-col pb-3">
                         <label for="descriptionNo" class="text-xl pb-2">Descripción</label>
-                        <input class="rounded-[4px] h-9 text-black" type="text" id="descriptionNo">
+                        <input class="rounded-[4px] h-9 text-black" type="text" id="descriptionNo" name="description"
+                            required>
                     </div>
 
                     <div class="flex flex-col pb-3">
-                        <label for="amountNo"  class="text-xl pb-2">Monto</label>
-                        <input class="rounded-[4px] h-9 text-black" placeholder='0' type="number" id="amountNo">
+                        <label for="amountNo" class="text-xl pb-2">Monto</label>
+                        <input class="rounded-[4px] h-9 text-black" placeholder='0' type="number" id="amountNo"
+                            name="amount" required>
                     </div>
 
                     <div class="flex flex-col pb-3">
                         <label for="typeSelect" class="text-xl pb-2">Tipo</label>
-                        <select class="rounded-[4px] h-9 text-black" id="typeSelect">
+                        <select class="rounded-[4px] h-9 text-black" id="typeSelect" required>
                             <option value="Todos">Todos</option>
                             <option value="Gasto">Gasto</option>
                             <option value="Ganancia">Ganancia</option>
@@ -289,7 +323,7 @@
 
                     <div class="flex flex-col pb-3">
                         <label for="inputCategories" class="text-xl pb-2">Categoria</label>
-                        <select class="rounded-[4px] h-9 text-black" id="inputCategories">
+                        <select class="rounded-[4px] h-9 text-black" id="inputCategories" required>
                             <option value="Todos">Todos</option>
                             <option value="comida">Comida</option>
                             <option value="Servicios">Servicios</option>
@@ -306,15 +340,24 @@
                     </div>
 
                     <div class="text-right pt-6 pr-4">
-                        <button class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" id="cancelButtonNo">
+                        <button
+                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            id="cancelButtonNo">
                             Cancelar
                         </button>
-                        <button class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" id="addButtonNo">
+                        <button
+                            class="p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            id="addButtonNo">
                             Agregar
+                        </button>
+                        <button
+                            class="hidden p-1 px-4 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            id="addEditButtonNo">
+                            Agregar editado
                         </button>
                     </div>
 
-                </div>
+                </form>
             </div>
         </section>
 
@@ -322,7 +365,8 @@
         <!-- INICIO PANTALLA CATEGORIAS -->
 
         <section class="hidden flex justify-center py-14 px-6">
-            <div id="containerCategories" class="w-[100%] bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 py-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
+            <div id="containerCategories"
+                class="w-[100%] bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 py-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
                 <h2 class="text-4xl my-4">Categorías</h2>
                 <label for="categoriesInput" class="text-xl">Nombre</label>
                 <div class="flex flex-row space-x-4">
@@ -330,7 +374,8 @@
                         <input id="categoriesInput" type="text" class="w-[100%] h-[100%] border-white rounded-[5px]">
                     </div>
                     <div>
-                        <button id="addCategoryButton" class=" h-10 px-6 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
+                        <button id="addCategoryButton"
+                            class=" h-10 px-6 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
                     </div>
                 </div>
                 <div id="categories" class="columns-3"></div>
@@ -340,15 +385,18 @@
         <!-- Editar categorías -->
 
         <section id="editCategoryPanel" class="hidden flex justify-center pt-15 px-[0.5%]">
-            <div id="containerEditCategory" class="w-[85%] py-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
+            <div id="containerEditCategory"
+                class="w-[85%] py-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
                 <div>
                     <h2 class="text-4xl my-4">Editar categoría</h2>
                     <label for="editCategoryName" class="text-xl">Nombre</label>
                     <input type="text" id="editCategoryName" class="w-[100%] h-7 border-white rounded-[5px] mt-[2%]">
                 </div>
                 <div class="flex justify-end mt-7 md:mt-14">
-                    <button id="cancelButton" class="p-1 px-4 mr-2 text-1xl text-slate-500 bg-[#e5dde6] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Cancelar</button>
-                    <button id="editCategoryButton" class="p-1 px-4 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Editar</button>
+                    <button id="cancelButton"
+                        class="p-1 px-4 mr-2 text-1xl text-slate-500 bg-[#e5dde6] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Cancelar</button>
+                    <button id="editCategoryButton"
+                        class="p-1 px-4 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Editar</button>
                 </div>
             </div>
         </section>
@@ -359,8 +407,9 @@
 
         <!-- INICIO PANTALLA REPORTES -->
 
-        <section class="flex justify-center py-14 px-6">
-            <div id="containerReports" class="w-[100%] pb-3 px-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%]">
+        <section class="hidden flex justify-center py-14 px-6">
+            <div id="containerReports"
+                class="w-[100%] pb-3 px-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%] ">
                 <h2 class="text-4xl my-4">Reportes</h2>
                 <div id="noReports" class="hidden flex flex-col text-center mt-8">
                     <figure class="flex justify-center self-center">
@@ -373,7 +422,7 @@
                 <!-- Resumen -->
 
                 <div id="withReports" class="flex flex-col">
-                    <section id="summary" >
+                    <section id="summary">
                         <h3 class="text-[1.2rem]">Resumen</h3>
 
                         <!-- Categoría con mayor ganancia -->
@@ -381,7 +430,8 @@
                         <div class="grid grid-cols-3 gap-3">
                             <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor ganancia</div>
                             <div class="col-start-4 col-span-1">
-                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                                <span id="tagCategory"
+                                    class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
                             </div>
                             <div id="amountCategory" class="col-start-5 col-span-1 text-green-600"></div>
                         </div>
@@ -391,7 +441,8 @@
                         <div class="grid grid-cols-3 gap-3">
                             <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor gasto</div>
                             <div class="col-start-4 col-span-1">
-                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                                <span id="tagCategory"
+                                    class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
                             </div>
                             <div id="amountCategory" class="col-start-5 col-span-1 text-red-600"></div>
                         </div>
@@ -401,7 +452,8 @@
                         <div class="grid grid-cols-3 gap-3">
                             <div class="col-start-1 col-span-3 text-[0.95rem]">Categoría con mayor balance</div>
                             <div class="col-start-4 col-span-1">
-                                <span id="tagCategory" class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
+                                <span id="tagCategory"
+                                    class="bg-[#8f7193] text-[0.8rem] px-1 border-2 border-[#8f7193] rounded-[10%]"></span>
                             </div>
                             <div id="amountCategory" class="col-start-5 col-span-1"></div>
                         </div>
@@ -440,9 +492,9 @@
                                 <th class="pr-2">Gastos</th>
                                 <th class="pr-2">Balance</th>
                             </thead>
-                            
+
                             <tbody></tbody>
-                            
+
                         </table>
                     </section>
 
@@ -458,7 +510,7 @@
                                 <th class="pr-2">Gastos</th>
                                 <th class="pr-2">Balance</th>
                             </thead>
-                            
+
                             <tbody></tbody>
 
                         </table>
