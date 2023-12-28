@@ -151,7 +151,7 @@ const initialize = () => {
 
     // MENU //
     $('#burger-btn').addEventListener('click', () => {
-        $('#burger-menu').classList.toggle('hidden');
+        $('#burgerMenu').classList.toggle('hidden');
     });
 
     $('#showBalance').addEventListener('click', () => {
@@ -166,7 +166,19 @@ const initialize = () => {
         showScreens("Reports")
     })
 
+    // BURGER MENU
 
+    $('#show-Balance').addEventListener('click', () => {
+        showScreens("Balance")
+    }) 
+
+    $('#show-Categories').addEventListener('click', () => {
+        showScreens("Categories")
+    }) 
+
+    $('#show-Reports').addEventListener('click', () => {
+        showScreens("Reports")
+    })
     //nueva operacion
     $('#btnNewOperation').addEventListener('click', () => {
         add(['.balance-screen',])

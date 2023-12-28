@@ -61,30 +61,7 @@
             </div>
 
             <!-- ocultar menu -->
-            <ul id="burger-menu" class="hidden md:hidden bg-slate-700 bg-opacity-75 w-32">
-
-                <li>
-                    <button class="block w-full p-2.5 text-left hover:bg-gray-200" id="showBalance">
-                        <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
-                        Balance
-                    </button>
-                </li>
-
-                <li>
-                    <button class="block w-full p-2.5 text-left hover:bg-gray-200" id="showCategories">
-                        <i class="fas fa-tag mr-2" aria-hidden="true"></i>
-                        Categorías
-                    </button>
-                </li>
-
-                <li>
-                    <button class="block w-full p-2.5 text-left hover:bg-gray-200" id="showReports">
-                        <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
-                        Reportes
-                    </button>
-                </li>
-
-            </ul>
+            
         </nav>
         <!-- FIN NAV -->
     </header>
@@ -92,7 +69,38 @@
 
     <!-- INICIO MAIN -->
     <main class="font-mono">
+
+
+        <!-- Navbar pantallas chicas -->
+        <div  id="burgerMenu" class="hidden lg:hidden bg-[#b899bc] w-screen" >
+            <ul>
+
+                <li id="show-Balance">
+                    <button class="w-full p-2.5 text-left hover:bg-gray-200" >
+                        <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
+                        Balance
+                    </button>
+                </li>
+
+                <li>
+                    <button class="w-full p-2.5 text-left hover:bg-gray-200" id="show-Categories">
+                        <i class="fas fa-tag mr-2" aria-hidden="true"></i>
+                        Categorías
+                    </button>
+                </li>
+
+                <li>
+                    <button class="w-full p-2.5 text-left hover:bg-gray-200" id="show-Reports">
+                        <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                        Reportes
+                    </button>
+                </li>
+
+            </ul>
+        </div>
         <!-- INICIO PANTALLA BALANCE -->
+        
+
 
         <section class=" flex justify-center pt-20 px-6 balance-screen screen" id="containerBalance">
             <div class="pr-6 container-balance-filters">
@@ -378,7 +386,56 @@
                             class=" h-10 px-6 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
                     </div>
                 </div>
-                <div id="categories" class="columns-3"></div>
+                <div id="categories" class="">
+                    <table id="categoriesTable" class="table-auto">
+
+                        <tbody>
+                            <tr>
+                                <td>Comida</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Servicios</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Salidas</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Educación</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Transporte</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trabajo</td>
+                                <td>
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -505,7 +562,7 @@
                         <table id="monthSummaryTable" class="table-auto">
 
                             <thead class="text-left text-[0.90rem]">
-                                <th class="pr2">Categorías</th>
+                                <th class="pr-2">Categorías</th>
                                 <th class="pr-2">Ganancias</th>
                                 <th class="pr-2">Gastos</th>
                                 <th class="pr-2">Balance</th>
