@@ -1,7 +1,21 @@
 
 
-// FUNCIONES REUTILIZABLES
+// FUNCIONES REUTILIZABLES //
 const $ = (selector) => document.querySelector(selector)
+const $$ = (selector) => document.querySelectorAll(selector)
+
+
+// This function shows a screen and hide the others which are not in use //
+
+const showScreens = (screenName) => {
+    const screens = $$('.screen')
+
+    for (let screen of screens) {
+        screen.classList.add('hidden')
+    }
+
+    $(`#container${screenName}`).classList.remove('hidden')
+}
 
 const remove = (selectors) => {
     for (const selector of selectors) {
@@ -15,6 +29,8 @@ const add = (selectors) => {
 }
 
 const randomId = () => self.crypto.randomUUID()
+
+// VISTAS //
 
 // funciones localStorage
 
@@ -126,17 +142,43 @@ const deleteDate = (operationId) => {
 
 
 // EVENTOS
-const initializacion = () => {
+
+const initialize = () => {
     // en operations envia allOperation (este tiene todas las operaciones realizadas almacenadas)
     setData('operations', allOperation)
     // ambes de iniciar  renderOperations abajo de la misma , la inicializamos aca con las operaciones ya obtenidas y parseadas del localStorage
     iterateOperations(allOperation)
 
-    // menu hamburguesa
+    // MENU //
     $('#burger-btn').addEventListener('click', () => {
-        $('#burger-menu').classList.toggle('hidden');
+        $('#burgerMenu').classList.toggle('hidden');
     });
 
+    $('#showBalance').addEventListener('click', () => {
+        showScreens("Balance")
+    }) 
+
+    $('#showCategories').addEventListener('click', () => {
+        showScreens("Categories")
+    }) 
+
+    $('#showReports').addEventListener('click', () => {
+        showScreens("Reports")
+    })
+
+    // BURGER MENU
+
+    $('#show-Balance').addEventListener('click', () => {
+        showScreens("Balance")
+    }) 
+
+    $('#show-Categories').addEventListener('click', () => {
+        showScreens("Categories")
+    }) 
+
+    $('#show-Reports').addEventListener('click', () => {
+        showScreens("Reports")
+    })
     //nueva operacion
     $('#btnNewOperation').addEventListener('click', () => {
         add(['.balance-screen',])
@@ -195,7 +237,7 @@ const initializacion = () => {
     })
 }
 
-window.addEventListener('load', initializacion())
+window.addEventListener('load', initialize())
 
 
 
