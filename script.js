@@ -187,20 +187,19 @@ const addCategory = () => {
     const currentData = getData("categories")
     currentData.push(createCategory())
     setData("categories", currentData)
-    window.location.reload()
 }
 
 // Edit Categories
 
 const showEditCategory = (categoryID) => {
     showScreens("EditCategory")
-    $(".edit-category").setAttribute("dataId" , categoryID)
+    $(".edit-category").setAttribute("data-id" , categoryID)
     const categoryToEdit = getData("categories").find(category => category.id === categoryID)
     $("#editCategoryName").value = categoryToEdit.name
 }
 
 const editCategory = () => {
-    const categoryId = $("#editCategoryButton").getAttribute("dataId")
+    const categoryId = $("#editCategoryButton").getAttribute("data-id")
     const currentData = getData("categories").map(category => {
         if (category.id === categoryId) {
             return {
@@ -214,22 +213,24 @@ const editCategory = () => {
     console.log(currentData)
 }
 
+//Delete category
+
 const showDeleteCategory = (categoryId) => {
     showScreens("DeleteCategory")
-
-    $('delete-category').setAttribute('data-id', categoryId)
+    $(".delete-category").setAttribute("data-id", categoryId)
+    $("#deleteCategory").setAttribute("data-id", categoryId)
 }
 
-//$('delete-category').addEventListener('click', () => {
-//    const categoryId = $('delete-category').getAttribute('data-id')
-//    deleteCategory(operationId)
-//})
+const deleteCategory = (categoryId) => {
+    const currentData = getData("categories").filter(category => category.id != categoryId)
+    setData("categories", currentData)
+}
 
-//const deleteDate = (operationId) => {
-    // pedimos las operaciones y las filtramos diciendo que nos arme un array con las operaciones que no coinciden con el id de la opacion clickeada, menos, a la si coincide 
- //   const currentData = getData('operations').filter(operation => operation.id != operationId)
-//    setData('operations', currentData)
-//    window.location.reload()
+const confirmDeleteCategory = () => {
+    const categoryId = $("#deleteCategory").getAttribute("data-id")
+    deleteCategory(categoryId)
+}
+
 
 //This function reder categories
 
@@ -383,6 +384,11 @@ const initialize = () => {
 
     $("#cancelDelete").addEventListener('click' , () => {
         showScreens("Categories")
+    })
+
+    $("#deleteCategory").addEventListener('click' , () => {
+        showScreens("Categories")
+        confirmDeleteCategory()
     })
 }
 
