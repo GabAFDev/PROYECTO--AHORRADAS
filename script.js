@@ -52,14 +52,14 @@ const askForData = () => {
 
 }
 
+
+// -------------------- OPERATIONS --------------------//
+
 // Obtener operación por su ID
 const getOperationById = (id) => {
     const operations = getData('operations');
     return operations.find(operation => operation.id === id) || null;
 };
-
-
-// -------------------- OPERATIONS --------------------//
 
 //New operation 
 
@@ -191,6 +191,13 @@ const addCategory = () => {
 
 // Edit Categories
 
+const modifyCategory = (categoryId) => {
+    return {
+        id: categoryId,
+        name: $('#editCategoryName').value,
+    }
+}
+
 const showEditCategory = (categoryID) => {
     showScreens("EditCategory")
     $(".edit-category").setAttribute("data-id" , categoryID)
@@ -202,10 +209,7 @@ const editCategory = () => {
     const categoryId = $("#editCategoryButton").getAttribute("data-id")
     const currentData = getData("categories").map(category => {
         if (category.id === categoryId) {
-            return {
-                id: categoryId,
-                name: $('#editCategoryName').value
-            }
+            return modifyCategory(categoryId)
         }
         return category
     })
@@ -249,7 +253,13 @@ const renderCategories = (categories) => {
     }
 }
 
-
+const renderCategoriesOptions = (categories) => {
+    for (const category of categories) {
+        $("#categories").innerHTML += `
+            <option value= "${category.id}">${category.name}</option>
+        `
+    }
+}
 
 // -------------------- EVENTS --------------------//
 
@@ -260,6 +270,7 @@ const initialize = () => {
     // ambes de iniciar  renderOperations abajo de la misma , la inicializamos aca con las operaciones ya obtenidas y parseadas del localStorage
     iterateOperations(allOperation)
     renderCategories(allCategories)
+    renderCategoriesOptions(allCategories)
 
     // ---- MENU EVENTS ---- //
 
