@@ -1,6 +1,6 @@
+// ---------------------- UTILITIES ----------------------//
 
-
-// FUNCIONES REUTILIZABLES //
+// query selectors //
 const $ = (selector) => document.querySelector(selector)
 const $$ = (selector) => document.querySelectorAll(selector)
 
@@ -17,22 +17,27 @@ const showScreens = (screenName) => {
     $(`#container${screenName}`).classList.remove('hidden')
 }
 
+// This function removes hidden class//
+
 const remove = (selectors) => {
     for (const selector of selectors) {
         $(selector).classList.remove('hidden')
     }
 }
+
+// This function adds hidden class//
+
 const add = (selectors) => {
     for (const selector of selectors) {
         $(selector).classList.add('hidden')
     }
 }
 
+// This function creates Random IDs //
+
 const randomId = () => self.crypto.randomUUID()
 
-// VISTAS //
-
-// funciones localStorage
+// -------------------- LOCAL STORAGE --------------------//
 
 // enviar datos
 const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data))
@@ -54,13 +59,10 @@ const getOperationById = (id) => {
 };
 
 
+// -------------------- OPERATIONS --------------------//
 
+//New operation 
 
-
-
-
-
-// SECCION AGREGAR NUEVA OPERACION 
 const iterateOperations = (operations) => {
     for (const operation of operations) {
         $('#tableOperations').innerHTML += `
@@ -79,10 +81,9 @@ const iterateOperations = (operations) => {
 }
 
 
-
-
-
 //guarda el value de los inputs como objetos
+
+
 const infoForm = () => {
     return {
         id: randomId(),
@@ -139,17 +140,81 @@ const deleteDate = (operationId) => {
     window.location.reload()
 }
 
+// -------------------- CATEGORIES --------------------//
 
 
-// EVENTOS
+
+// This function sets the default categories as first shown in screen //
+
+
+const defaultCategories = [
+    {
+        id: randomId(),
+        categoryName: "Comida"
+    },
+    {
+        id: randomId(),
+        categoryName: "Servicios"
+    },
+    {
+        id: randomId(),
+        categoryName: "Salidas"
+    },
+    {
+        id: randomId(),
+        categoryName: "Educación"
+    },
+    {
+        id: randomId(),
+        categoryName: "Transporte"
+    },
+    {
+        id: randomId(),
+        categoryName: "Trabajo"
+    },
+]
+
+// This variable contains all categories as an array, default plus modifications //
+
+const allCategories = getData("categories") || defaultCategories
+
+//This function creates an object for new categories//
+
+const createCategory = () => {
+    return {
+        id: randomId(),
+        categoryName: $('#categoriesInput').value
+    }
+}
+
+//This function reder categories
+
+const renderCategories = (categories) => {
+    for (const category of categories) {
+        $("#categoriesTable").innerHTML += `
+            <tr class="flex w-[100%] justify-between">
+                <td>${category.categoryName}</td>
+                <td>
+                    <button class="edit-category" onclick= "showScreens('EditCategory')">Editar</button>
+                    <button>Eliminar</button>
+                </td>
+            </tr>
+        `
+    }
+}
+// -------------------- EVENTS --------------------//
 
 const initialize = () => {
     // en operations envia allOperation (este tiene todas las operaciones realizadas almacenadas)
     setData('operations', allOperation)
+    setData('categories', allCategories)
     // ambes de iniciar  renderOperations abajo de la misma , la inicializamos aca con las operaciones ya obtenidas y parseadas del localStorage
     iterateOperations(allOperation)
+    renderCategories(allCategories)
 
-    // MENU //
+    // ---- MENU EVENTS ---- //
+
+
     $('#burger-btn').addEventListener('click', () => {
         $('#burgerMenu').classList.toggle('hidden');
     });
@@ -166,7 +231,8 @@ const initialize = () => {
         showScreens("Reports")
     })
 
-    // BURGER MENU
+    // ---- BURGER MENU EVENTS ---- //
+
 
     $('#show-Balance').addEventListener('click', () => {
         showScreens("Balance")
@@ -179,7 +245,11 @@ const initialize = () => {
     $('#show-Reports').addEventListener('click', () => {
         showScreens("Reports")
     })
+
+
     //nueva operacion
+
+
     $('#btnNewOperation').addEventListener('click', () => {
         add(['.balance-screen',])
         remove(['.new-operarion-screen'])
@@ -234,6 +304,14 @@ const initialize = () => {
         // le pasamos al localStorage el array modificado
         setData('operations', currentData)
         window.location.reload()
+    })
+
+    // CATEGPRIES SCREEN EVENTS//
+    //Cancel on edit category
+
+    $('#cancelButton').addEventListener('click', () => {
+        remove(['#containerCategories'])
+        add(['#containerEditCategory'])
     })
 }
 
