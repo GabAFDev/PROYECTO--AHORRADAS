@@ -142,11 +142,9 @@ const deleteDate = (operationId) => {
 
 // -------------------- CATEGORIES --------------------//
 
+// General functions 
 
-
-// This function sets the default categories as first shown in screen //
-
-
+//Default
 const defaultCategories = [
     {
         id: randomId(),
@@ -174,11 +172,9 @@ const defaultCategories = [
     }
 ]
 
-// This variable contains all categories as an array, default plus modifications //
-
 const allCategories = getData("categories") || defaultCategories
 
-//This function creates an object for new categories//
+// New categories
 
 const createCategory = () => {
     return {
@@ -187,21 +183,73 @@ const createCategory = () => {
     }
 }
 
+const addCategory = () => {
+    const currentData = getData("categories")
+    currentData.push(createCategory())
+    setData("categories", currentData)
+    window.location.reload()
+}
+
+// Edit Categories
+
+const showEditCategory = (categoryID) => {
+    showScreens("EditCategory")
+    $(".edit-category").setAttribute("dataId" , categoryID)
+    const categoryToEdit = getData("categories").find(category => category.id === categoryID)
+    $("#editCategoryName").value = categoryToEdit.name
+}
+
+const editCategory = () => {
+    const categoryId = $("#editCategoryButton").getAttribute("dataId")
+    const currentData = getData("categories").map(category => {
+        if (category.id === categoryId) {
+            return {
+                id: categoryId,
+                name: $('#editCategoryName').value
+            }
+        }
+        return category
+    })
+    setData("categories", currentData)
+    console.log(currentData)
+}
+
+const showDeleteCategory = (categoryId) => {
+    showScreens("DeleteCategory")
+
+    $('delete-category').setAttribute('data-id', categoryId)
+}
+
+//$('delete-category').addEventListener('click', () => {
+//    const categoryId = $('delete-category').getAttribute('data-id')
+//    deleteCategory(operationId)
+//})
+
+//const deleteDate = (operationId) => {
+    // pedimos las operaciones y las filtramos diciendo que nos arme un array con las operaciones que no coinciden con el id de la opacion clickeada, menos, a la si coincide 
+ //   const currentData = getData('operations').filter(operation => operation.id != operationId)
+//    setData('operations', currentData)
+//    window.location.reload()
+
 //This function reder categories
 
 const renderCategories = (categories) => {
     for (const category of categories) {
         $("#categoriesTable").innerHTML += `
             <tr class="flex w-[100%] justify-between">
-                <td>${category.name}</td>
+                <td class= "text-[1.3rem]">${category.name}</td>
                 <td>
-                    <button class="edit-category" onclick= "showScreens('EditCategory')">Editar</button>
-                    <button>Eliminar</button>
+                    <button class="edit-category bg-green-700 hover:bg-green-500 border-white rounded-[25%]" onclick= "showEditCategory('${category.id}')"><i class="fa-solid fa-pen-to-square p-1.5"></i></button>
+                    <button class="delete-category text-white h bg-red-700 hover:bg-red-500 border-white rounded-[25%] mr-1" onclick= "showDeleteCategory('${category.id}')"><i class="fa-solid fa-trash-can p-1.5"></i></button>
                 </td>
             </tr>
+            <hr class= "text-black text-1 my-1.5"/>
         `
     }
 }
+
+
+
 // -------------------- EVENTS --------------------//
 
 const initialize = () => {
@@ -306,18 +354,36 @@ const initialize = () => {
         window.location.reload()
     })
 
-    // CATEGPRIES SCREEN EVENTS//
-    //Cancel on edit category
+    //-----------------CATEGoRIES SCREEN EVENTS-----------------//
+
+    //---- Add category -----//
+
+    $("#addCategoryButton").addEventListener('click' , (e) => {
+        e.preventDefault()
+        addCategory()
+        $("#categoriesInput").reset() 
+        showScreens("Categories")
+    })
+
+    //---- Edit category -----//
+
+    $("#editCategoryButton").addEventListener('click' , (e) => {
+        e.preventDefault()
+        editCategory()
+        showScreens("Categories")
+        
+    })
+
 
     $('#cancelButton').addEventListener('click', () => {
-        remove(['#containerCategories'])
-        add(['#containerEditCategory'])
+        showScreens("Categories")
+    })
+
+     //---- Delete category -----//
+
+    $("#cancelDelete").addEventListener('click' , () => {
+        showScreens("Categories")
     })
 }
 
 window.addEventListener('load', initialize())
-
-
-
-
-
