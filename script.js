@@ -150,28 +150,28 @@ const deleteDate = (operationId) => {
 const defaultCategories = [
     {
         id: randomId(),
-        categoryName: "Comida"
+        name: "Comida"
     },
     {
         id: randomId(),
-        categoryName: "Servicios"
+        name: "Servicios"
     },
     {
         id: randomId(),
-        categoryName: "Salidas"
+        name: "Salidas"
     },
     {
         id: randomId(),
-        categoryName: "Educación"
+        name: "Educación"
     },
     {
         id: randomId(),
-        categoryName: "Transporte"
+        name: "Transporte"
     },
     {
         id: randomId(),
-        categoryName: "Trabajo"
-    },
+        name: "Trabajo"
+    }
 ]
 
 // This variable contains all categories as an array, default plus modifications //
@@ -183,7 +183,7 @@ const allCategories = getData("categories") || defaultCategories
 const createCategory = () => {
     return {
         id: randomId(),
-        categoryName: $('#categoriesInput').value
+        name: $('#categoriesInput').value,
     }
 }
 
@@ -193,7 +193,7 @@ const renderCategories = (categories) => {
     for (const category of categories) {
         $("#categoriesTable").innerHTML += `
             <tr class="flex w-[100%] justify-between">
-                <td>${category.categoryName}</td>
+                <td>${category.name}</td>
                 <td>
                     <button class="edit-category" onclick= "showScreens('EditCategory')">Editar</button>
                     <button>Eliminar</button>
