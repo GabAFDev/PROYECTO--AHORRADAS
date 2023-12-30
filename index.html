@@ -184,13 +184,6 @@
                             <div class="flex flex-col pb-3">
                                 <label for="categories" class="text-xl pb-2">Categoria</label>
                                 <select class="rounded-[4px] h-9 text-black" id="categories">
-                                    <option value="Todos">Todos</option>
-                                    <option value="comida">Comida</option>
-                                    <option value="Servicios">Servicios</option>
-                                    <option value="Salidas">Salidas</option>
-                                    <option value="Educación">Educación</option>
-                                    <option value="Transporte">Transporte</option>
-                                    <option value="Trabajo">Trabajo</option>
                                 </select>
                             </div>
 
@@ -220,7 +213,7 @@
 
             <!-- operaciones -->
             <div
-                class=" w-[50%] h-[580px] bg-[#a183a2] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
+                class=" w-[50%] h-[580px] bg-[#a183a2] border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
 
                 <div class="flex justify-between aling-center pt-4 operations-btn-title">
                     <h2 class="font-mono text-4xl pb-4">
@@ -299,7 +292,7 @@
         <!-- FIN PANTALLA BALANCE -->
 
         <!-- INICIO PANTALLA NUEVA OPERACION -->
-        <section class="hidden flex justify-center py-14 px-6 new-operarion-screen screen">
+        <section class="hidden flex justify-center py-14 px-6 new-operarion-screen screen" id="containerNewOperation">
             <div
                 class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
                 <h2 class="font-mono text-4xl py-4">
@@ -349,7 +342,7 @@
 
                     <div class="text-right pt-6 pr-4">
                         <button
-                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" 
                             id="cancelButtonNo">
                             Cancelar
                         </button>
@@ -374,91 +367,61 @@
 
         <section class="hidden flex justify-center py-14 px-6 screen" id="containerCategories">
             <div
-                class="w-[100%] bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 py-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] lg:max-w-[60%]">
+                class="w-[100%] bg-[#a183a2] border-2 border-white rounded-[5px] px-3 py-3 text-white shadow-2xl md:max-w-[80%] lg:max-w-[55%]">
                 <h2 class="text-4xl my-4">Categorías</h2>
                 <label for="categoriesInput" class="text-xl">Nombre</label>
                 <div class="flex flex-row space-x-4">
                     <div class="w-[85%]">
-                        <input id="categoriesInput" type="text" class="w-[100%] h-[100%] border-white rounded-[5px]">
+                        <input id="categoriesInput" type="text" class="w-[100%] h-[100%] border-white rounded-[5px] text-black pl-2">
                     </div>
                     <div>
                         <button id="addCategoryButton"
-                            class=" h-10 px-6 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
+                            class=" h-10 px-6 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Agregar</button>
                     </div>
                 </div>
-                <div id="categories" class="">
-                    <table id="categoriesTable" class="table-auto">
+                <div id="categories" class="mt-10">
+                    <table class="table-auto w-[100%]">
 
-                        <tbody>
-                            <tr>
-                                <td>Comida</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Servicios</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Salidas</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Educación</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Transporte</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trabajo</td>
-                                <td>
-                                    <button>Editar</button>
-                                    <button>Eliminar</button>
-                                </td>
-                            </tr>
+                        <tbody class="flex flex-col" id="categoriesTable">
+                            
                         </tbody>
 
                     </table>
                 </div>
+
             </div>
         </section>
 
         <!-- Editar categorías -->
 
-        <section id="editCategoryPanel" class="hidden flex justify-center pt-15 px-[0.5%] screen">
-            <div id="containerEditCategory"
-                class="w-[85%] py-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
+        <section  id="containerEditCategory" class="hidden flex justify-center py-14 px-6 screen">
+            <div
+                class="w-[85%] py-3 bg-[#a183a2] border-2 border-white rounded-[5px] px-3 text-white shadow-2xl md:max-w-[50%] xl:max-w-[40%]">
                 <div>
                     <h2 class="text-4xl my-4">Editar categoría</h2>
                     <label for="editCategoryName" class="text-xl">Nombre</label>
-                    <input type="text" id="editCategoryName" class="w-[100%] h-7 border-white rounded-[5px] mt-[2%]">
+                    <input type="text" id="editCategoryName" class="w-[100%] h-7 border-white rounded-[5px] mt-[2%] text-black pl-2">
                 </div>
                 <div class="flex justify-end mt-7 md:mt-14">
                     <button id="cancelButton"
                         class="p-1 px-4 mr-2 text-1xl text-slate-500 bg-[#e5dde6] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Cancelar</button>
                     <button id="editCategoryButton"
-                        class="p-1 px-4 text-1xl bg-[#a788ab] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Editar</button>
+                        class="p-1 px-4 text-1xl bg-[#b899bc] border-2 border-white rounded-[1000px] hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100">Editar</button>
                 </div>
             </div>
         </section>
 
         <!-- Fin editar categorías -->
+
+        <div class="hidden fixed inset-0 overflow-y-auto screen" id="containerDeleteCategory">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+                <span class=" sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            </div>
+        </div>
+
         <!-- FIN PANTALLA CATEGORIAS -->
 
 
@@ -466,7 +429,7 @@
 
         <section class="hidden flex justify-center py-14 px-6 screen" id="containerReports">
             <div
-                class="w-[100%] pb-3 px-3 bg-[#c0a0c3] border-2 border-white rounded-[5px] text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%] ">
+                class="w-[100%] pb-3 px-3 bg-[#a183a2] border-2 border-white rounded-[5px] text-white shadow-2xl md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%] ">
                 <h2 class="text-4xl my-4">Reportes</h2>
                 <div id="noReports" class="hidden flex flex-col text-center mt-8">
                     <figure class="flex justify-center self-center">

@@ -1,9 +1,8 @@
+// ---------------------- UTILITIES ----------------------//
 
-
-// FUNCIONES REUTILIZABLES //
+// query selectors //
 const $ = (selector) => document.querySelector(selector)
 const $$ = (selector) => document.querySelectorAll(selector)
-
 
 // This function shows a screen and hide the others which are not in use //
 
@@ -17,22 +16,29 @@ const showScreens = (screenName) => {
     $(`#container${screenName}`).classList.remove('hidden')
 }
 
+const cleanContainer = (selector) => $(selector).innerHTML = ""
+
+// This function removes hidden class//
+
 const remove = (selectors) => {
     for (const selector of selectors) {
         $(selector).classList.remove('hidden')
     }
 }
+
+// This function adds hidden class//
+
 const add = (selectors) => {
     for (const selector of selectors) {
         $(selector).classList.add('hidden')
     }
 }
 
+// This function creates Random IDs //
+
 const randomId = () => self.crypto.randomUUID()
 
-// VISTAS //
-
-// funciones localStorage
+// -------------------- LOCAL STORAGE --------------------//
 
 // enviar datos
 const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data))
@@ -47,31 +53,31 @@ const askForData = () => {
 
 }
 
+
+// -------------------- OPERATIONS --------------------//
+
 // Obtener operación por su ID
 const getOperationById = (id) => {
     const operations = getData('operations');
     return operations.find(operation => operation.id === id) || null;
 };
 
+//New operation 
 
-
-
-
-
-
-
-// SECCION AGREGAR NUEVA OPERACION 
 const iterateOperations = (operations) => {
+    
     for (const operation of operations) {
+        cleanContainer('#tableOperations')
+        const categorySelected = getData("categories").find(category => category.id === operation.category)
         $('#tableOperations').innerHTML += `
         <tr class="border-b">
                     <td class="p-4">${operation.description}</td>
-                    <td class="mt-6 ml-5 py-1 px-2 inline-block bg-[#886a8e]  rounded-full">${operation.category}</td>
+                    <td class="mt-6 ml-5 py-1 px-2 inline-block bg-[#886a8e]  rounded-full">${categorySelected.name}</td>
                     <td class="p-2">${operation.date}</td>
                     <td class="p-2">${operation.amount}</td>
                     <td class="p-2 flex flex-col space-y-2">
-                        <button class="text-[12px] text-green-300 hover:text-slate-500" onclick="showFormEdit('${operation.id}')">Editar</button>
-                        <button class="text-[12px] text-red-300 hover:text-slate-500"  onclick="showDeleteOperation('${operation.id}')">Eliminar</button>
+                        <button class="edit-category bg-green-700 hover:bg-green-500 border-white rounded-[25%] w-[30%] self-center" onclick= "showEditCategory('${operation.id}')"><i class="fa-solid fa-pen-to-square p-1.5"></i></button>
+                        <button class="delete-category text-white h bg-red-700 hover:bg-red-500 border-white rounded-[25%] w-[30%] self-center" onclick= "confirmDeleteCategory('${operation.id}')"><i class="fa-solid fa-trash-can p-1.5"></i></button>
                     </td>
                 </tr>
     `
@@ -79,17 +85,16 @@ const iterateOperations = (operations) => {
 }
 
 
-
-
-
 //guarda el value de los inputs como objetos
+
+
 const infoForm = () => {
     return {
         id: randomId(),
         description: $('#descriptionNo').value,
         amount: $('#amountNo').value,
         type: $('#typeSelect').value,
-        category: $('#inputCategories').value,
+        category: $('#categories').value,
         date: $('#inputDate').value
     };
 }
@@ -110,7 +115,7 @@ const showFormEdit = (operationId) => {
     $('#descriptionNo').value = operationSelected.description
     $('#amountNo').value = operationSelected.amount
     $('#typeSelect').value = operationSelected.type
-    $('#inputCategories').value = operationSelected.category
+    $('#categories').value = operationSelected.category
     $('#inputDate').value = operationSelected.date
 
     // ahora me voy al boton aceptar para meter el id 
@@ -139,17 +144,139 @@ const deleteDate = (operationId) => {
     window.location.reload()
 }
 
+// -------------------- CATEGORIES --------------------//
+
+// General functions 
+
+//Default
+const defaultCategories = [
+    {
+        id: randomId(),
+        name: "Comida"
+    },
+    {
+        id: randomId(),
+        name: "Servicios"
+    },
+    {
+        id: randomId(),
+        name: "Salidas"
+    },
+    {
+        id: randomId(),
+        name: "Educación"
+    },
+    {
+        id: randomId(),
+        name: "Transporte"
+    },
+    {
+        id: randomId(),
+        name: "Trabajo"
+    }
+]
+
+const allCategories = getData("categories") || defaultCategories
+
+// New categories
+
+const createCategory = () => {
+    return {
+        id: randomId(),
+        name: $('#categoriesInput').value,
+    }
+}
+
+const addCategory = () => {
+    const currentData = getData("categories")
+    currentData.push(createCategory())
+    setData("categories", currentData)
+    renderCategories(currentData)
+}
+
+// Edit Categories
+
+const modifyCategory = (categoryId) => {
+    return {
+        id: categoryId,
+        name: $('#editCategoryName').value,
+    }
+}
+
+const showEditCategory = (categoryID) => {
+    showScreens("EditCategory")
+    $(".edit-category").setAttribute("data-id" , categoryID)
+    const categoryToEdit = getData("categories").find(category => category.id === categoryID)
+    $("#editCategoryName").value = categoryToEdit.name
+}
+
+const editCategory = () => {
+    const categoryId = $(".edit-category").getAttribute("data-id")
+    const currentData = getData("categories").map(category => {
+        if (category.id === categoryId) {
+            return modifyCategory(categoryId)
+        }
+        return category
+    })
+    setData("categories", currentData)
+    renderCategories(currentData)
+}
+
+//Delete category
+
+const deleteCategory = (categoryId) => {
+    const currentData = getData("categories").filter(category => category.id != categoryId)
+    setData("categories", currentData)
+    return currentData
+}
+
+const confirmDeleteCategory = (categoryId) => {
+    renderCategories(deleteCategory(categoryId))
+    const currentData = getData("operations").filter(operation => operation.category != categoryId)
+    setData("operations", currentData)
+}
 
 
-// EVENTOS
+//This function reder categories
+
+const renderCategories = (categories) => {
+    cleanContainer('#categoriesTable')
+    for (const category of categories) {
+        $("#categoriesTable").innerHTML += `
+            <tr class="flex w-[100%] justify-between">
+                <td class= "text-[1.3rem]">${category.name}</td>
+                <td>
+                    <button class="edit-category bg-green-700 hover:bg-green-500 border-white rounded-[25%]" onclick= "showEditCategory('${category.id}')"><i class="fa-solid fa-pen-to-square p-1.5"></i></button>
+                    <button class="delete-category text-white h bg-red-700 hover:bg-red-500 border-white rounded-[25%] mr-1" onclick= "confirmDeleteCategory('${category.id}')"><i class="fa-solid fa-trash-can p-1.5"></i></button>
+                </td>
+            </tr>
+            <hr class= "text-black text-1 my-1.5"/>
+        `
+    }
+}
+
+const renderCategoriesOptions = (categories) => {
+    for (const category of categories) {
+        $("#categories").innerHTML += `
+            <option value= "${category.id}">${category.name}</option>
+        `
+    }
+}
+
+// -------------------- EVENTS --------------------//
 
 const initialize = () => {
     // en operations envia allOperation (este tiene todas las operaciones realizadas almacenadas)
     setData('operations', allOperation)
+    setData('categories', allCategories)
     // ambes de iniciar  renderOperations abajo de la misma , la inicializamos aca con las operaciones ya obtenidas y parseadas del localStorage
     iterateOperations(allOperation)
+    renderCategories(allCategories)
+    renderCategoriesOptions(allCategories)
 
-    // MENU //
+    // ---- MENU EVENTS ---- //
+
+
     $('#burger-btn').addEventListener('click', () => {
         $('#burgerMenu').classList.toggle('hidden');
     });
@@ -166,7 +293,8 @@ const initialize = () => {
         showScreens("Reports")
     })
 
-    // BURGER MENU
+    // ---- BURGER MENU EVENTS ---- //
+
 
     $('#show-Balance').addEventListener('click', () => {
         showScreens("Balance")
@@ -179,10 +307,13 @@ const initialize = () => {
     $('#show-Reports').addEventListener('click', () => {
         showScreens("Reports")
     })
+
+
     //nueva operacion
+
+
     $('#btnNewOperation').addEventListener('click', () => {
-        add(['.balance-screen',])
-        remove(['.new-operarion-screen'])
+        showScreens('NewOperation')
     })
 
     // cancelar nueva operacion
@@ -235,11 +366,31 @@ const initialize = () => {
         setData('operations', currentData)
         window.location.reload()
     })
+
+    //-----------------CATEGORIES SCREEN EVENTS-----------------//
+
+    //---- Add category -----//
+
+    $("#addCategoryButton").addEventListener('click' , (e) => {
+        e.preventDefault()
+        addCategory()
+        $("#categoriesInput").reset() 
+        showScreens("Categories")
+    })
+
+    //---- Edit category -----//
+
+    $("#editCategoryButton").addEventListener('click' , (e) => {
+        e.preventDefault()
+        editCategory()
+        showScreens("Categories")
+        
+    })
+
+
+    $('#cancelButton').addEventListener('click', () => {
+        showScreens("Categories")
+    })
 }
 
 window.addEventListener('load', initialize())
-
-
-
-
-
