@@ -191,6 +191,7 @@ const addCategory = () => {
     const currentData = getData("categories")
     currentData.push(createCategory())
     setData("categories", currentData)
+    renderCategories(currentData)
 }
 
 // Edit Categories
@@ -210,7 +211,7 @@ const showEditCategory = (categoryID) => {
 }
 
 const editCategory = () => {
-    const categoryId = $("#editCategoryButton").getAttribute("data-id")
+    const categoryId = $(".edit-category").getAttribute("data-id")
     const currentData = getData("categories").map(category => {
         if (category.id === categoryId) {
             return modifyCategory(categoryId)
@@ -218,7 +219,7 @@ const editCategory = () => {
         return category
     })
     setData("categories", currentData)
-    console.log(currentData)
+    renderCategories(currentData)
 }
 
 //Delete category
