@@ -213,7 +213,7 @@
 
             <!-- operaciones -->
             <div
-                class=" w-[50%] h-[580px] bg-[#a183a2] px-2 border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
+                class=" w-[50%] h-[580px] bg-[#a183a2] border-2 border-white rounded-[5px] px-6 text-white shadow-2xl operations-section">
 
                 <div class="flex justify-between aling-center pt-4 operations-btn-title">
                     <h2 class="font-mono text-4xl pb-4">
@@ -292,7 +292,7 @@
         <!-- FIN PANTALLA BALANCE -->
 
         <!-- INICIO PANTALLA NUEVA OPERACION -->
-        <section class="hidden flex justify-center py-14 px-6 new-operarion-screen screen">
+        <section class="hidden flex justify-center py-14 px-6 new-operarion-screen screen" id="containerNewOperation">
             <div
                 class="mb-9 w-[60%] h-[600px] bg-[#a183a2] border-2 border-white rounded-[5px] px-2 text-white shadow-2xl">
                 <h2 class="font-mono text-4xl py-4">
@@ -342,7 +342,7 @@
 
                     <div class="text-right pt-6 pr-4">
                         <button
-                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100"
+                            class="p-1 px-4 mr-2 text-1xl bg-[#d9c0d8] border-2 border-white rounded-[1000px] hover:border-transparent hover:text-slate-500 hover:duration-100" 
                             id="cancelButtonNo">
                             Cancelar
                         </button>
@@ -419,22 +419,6 @@
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                 </div>
                 <span class=" sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div
-                    class="inline-block align-middle bg-[#a183a2] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                    <div class="p-4 flex items-center justify-center space-y-4 ml-1">
-                        <p class="text-2xl text-white">
-                            ¿Estás seguro que quieres eliminar esta categoría?
-                        </p>
-                        <button
-                            class="p-2 text-xl bg-[#886a8e] border-2 border-white rounded-full text-white  transition duration-300 ease-in-out ml-1 hover:border-transparent hover:bg-white hover:text-slate-500 hover:duration-100"" id="cancelDelete">
-                            Cancelar
-                        </button>
-                        <button
-                            class="p-2 text-xl bg-red-600 border-2 border-white rounded-full text-white hover:border-transparent hover:bg-red-700 transition duration-300 ease-in-out ml-2" id="deleteCategory">
-                            Eliminar
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 

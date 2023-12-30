@@ -3,7 +3,6 @@
 // query selectors //
 const $ = (selector) => document.querySelector(selector)
 const $$ = (selector) => document.querySelectorAll(selector)
-const cleanContainer = (selector) => $(selector).innerHTML = ""
 
 // This function shows a screen and hide the others which are not in use //
 
@@ -16,6 +15,8 @@ const showScreens = (screenName) => {
 
     $(`#container${screenName}`).classList.remove('hidden')
 }
+
+const cleanContainer = (selector) => $(selector).innerHTML = ""
 
 // This function removes hidden class//
 
@@ -64,8 +65,9 @@ const getOperationById = (id) => {
 //New operation 
 
 const iterateOperations = (operations) => {
-    cleanContainer("#tableOperations")
+    
     for (const operation of operations) {
+        cleanContainer('#tableOperations')
         const categorySelected = getData("categories").find(category => category.id === operation.category)
         $('#tableOperations').innerHTML += `
         <tr class="border-b">
@@ -221,34 +223,30 @@ const editCategory = () => {
 
 //Delete category
 
-const showDeleteCategory = (categoryId) => {
-    showScreens("DeleteCategory")
-    $(".delete-category").setAttribute("data-id", categoryId)
-    $("#deleteCategory").setAttribute("data-id", categoryId)
-}
-
 const deleteCategory = (categoryId) => {
     const currentData = getData("categories").filter(category => category.id != categoryId)
     setData("categories", currentData)
+    return currentData
 }
 
-const confirmDeleteCategory = () => {
-    const categoryId = $("#deleteCategory").getAttribute("data-id")
-    deleteCategory(categoryId)
+const confirmDeleteCategory = (categoryId) => {
+    renderCategories(deleteCategory(categoryId))
+    const currentData = getData("operations").filter(operation => operation.category != categoryId)
+    setData("operations", currentData)
 }
 
 
 //This function reder categories
 
 const renderCategories = (categories) => {
-    cleanContainer("#table-professions")
+    cleanContainer('#categoriesTable')
     for (const category of categories) {
         $("#categoriesTable").innerHTML += `
             <tr class="flex w-[100%] justify-between">
                 <td class= "text-[1.3rem]">${category.name}</td>
                 <td>
                     <button class="edit-category bg-green-700 hover:bg-green-500 border-white rounded-[25%]" onclick= "showEditCategory('${category.id}')"><i class="fa-solid fa-pen-to-square p-1.5"></i></button>
-                    <button class="delete-category text-white h bg-red-700 hover:bg-red-500 border-white rounded-[25%] mr-1" onclick= "showDeleteCategory('${category.id}')"><i class="fa-solid fa-trash-can p-1.5"></i></button>
+                    <button class="delete-category text-white h bg-red-700 hover:bg-red-500 border-white rounded-[25%] mr-1" onclick= "confirmDeleteCategory('${category.id}')"><i class="fa-solid fa-trash-can p-1.5"></i></button>
                 </td>
             </tr>
             <hr class= "text-black text-1 my-1.5"/>
@@ -314,8 +312,7 @@ const initialize = () => {
 
 
     $('#btnNewOperation').addEventListener('click', () => {
-        add(['.balance-screen',])
-        remove(['.new-operarion-screen'])
+        showScreens('NewOperation')
     })
 
     // cancelar nueva operacion
@@ -369,7 +366,7 @@ const initialize = () => {
         window.location.reload()
     })
 
-    //-----------------CATEGoRIES SCREEN EVENTS-----------------//
+    //-----------------CATEGORIES SCREEN EVENTS-----------------//
 
     //---- Add category -----//
 
@@ -392,17 +389,6 @@ const initialize = () => {
 
     $('#cancelButton').addEventListener('click', () => {
         showScreens("Categories")
-    })
-
-     //---- Delete category -----//
-
-    $("#cancelDelete").addEventListener('click' , () => {
-        showScreens("Categories")
-    })
-
-    $("#deleteCategory").addEventListener('click' , () => {
-        showScreens("Categories")
-        confirmDeleteCategory()
     })
 }
 
