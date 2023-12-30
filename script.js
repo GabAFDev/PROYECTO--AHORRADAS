@@ -3,7 +3,7 @@
 // query selectors //
 const $ = (selector) => document.querySelector(selector)
 const $$ = (selector) => document.querySelectorAll(selector)
-
+const cleanContainer = (selector) => $(selector).innerHTML = ""
 
 // This function shows a screen and hide the others which are not in use //
 
@@ -64,11 +64,13 @@ const getOperationById = (id) => {
 //New operation 
 
 const iterateOperations = (operations) => {
+    cleanContainer("#tableOperations")
     for (const operation of operations) {
+        const categorySelected = getData("categories").find(category => category.id === operation.category)
         $('#tableOperations').innerHTML += `
         <tr class="border-b">
                     <td class="p-4">${operation.description}</td>
-                    <td class="mt-6 ml-5 py-1 px-2 inline-block bg-[#886a8e]  rounded-full">${operation.category}</td>
+                    <td class="mt-6 ml-5 py-1 px-2 inline-block bg-[#886a8e]  rounded-full">${categorySelected.name}</td>
                     <td class="p-2">${operation.date}</td>
                     <td class="p-2">${operation.amount}</td>
                     <td class="p-2 flex flex-col space-y-2">
@@ -90,7 +92,7 @@ const infoForm = () => {
         description: $('#descriptionNo').value,
         amount: $('#amountNo').value,
         type: $('#typeSelect').value,
-        category: $('#inputCategories').value,
+        category: $('#categories').value,
         date: $('#inputDate').value
     };
 }
@@ -111,7 +113,7 @@ const showFormEdit = (operationId) => {
     $('#descriptionNo').value = operationSelected.description
     $('#amountNo').value = operationSelected.amount
     $('#typeSelect').value = operationSelected.type
-    $('#inputCategories').value = operationSelected.category
+    $('#categories').value = operationSelected.category
     $('#inputDate').value = operationSelected.date
 
     // ahora me voy al boton aceptar para meter el id 
@@ -239,6 +241,7 @@ const confirmDeleteCategory = () => {
 //This function reder categories
 
 const renderCategories = (categories) => {
+    cleanContainer("#table-professions")
     for (const category of categories) {
         $("#categoriesTable").innerHTML += `
             <tr class="flex w-[100%] justify-between">
